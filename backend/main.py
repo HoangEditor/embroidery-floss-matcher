@@ -68,6 +68,8 @@ def frontend():
 
 @app.get("/blog/{slug}", response_class=HTMLResponse)
 def blog_post(slug: str):
+    if slug.endswith(".html"):
+        slug = slug[:-5]
     path = STATIC_DIR / "blog" / f"{slug}.html"
     if path.exists():
         return path.read_text(encoding="utf-8")
