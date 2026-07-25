@@ -74,23 +74,12 @@ def blog_post(slug: str):
     raise HTTPException(404, "Blog post not found")
 
 
-@app.get("/blog")
+@app.get("/blog", response_class=HTMLResponse)
 def blog_index():
-    """List all blog posts."""
-    blog_dir = STATIC_DIR / "blog"
-    posts = []
-    if blog_dir.exists():
-        import re
-        for f in sorted(blog_dir.glob("*.html"), reverse=True):
-            content = f.read_text(encoding="utf-8")
-            title_m = re.search(r'<title>(.+?)</title>', content)
-            desc_m = re.search(r'<meta name="description" content="(.+?)"', content)
-            posts.append({
-                "slug": f.stem,
-                "title": title_m.group(1) if title_m else f.stem,
-                "description": desc_m.group(1) if desc_m else "",
-            })
-    return {"posts": posts}
+    path = STATIC_DIR / "blog" / "index.html"
+    if path.exists():
+        return path.read_text(encoding="utf-8")
+    return "<h1>Blog</h1><p>No posts yet.</p>"
 
 
 if STATIC_DIR.exists():
