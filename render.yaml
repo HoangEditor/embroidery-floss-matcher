@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: embroidery-floss-matcher
+    env: docker
+    plan: free
+    region: singapore
+    branch: main
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/health
