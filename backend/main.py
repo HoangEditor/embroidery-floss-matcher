@@ -97,6 +97,13 @@ def robots():
         return Response(path.read_text(encoding="utf-8"), media_type="text/plain")
     raise HTTPException(404)
 
+@app.get("/about", response_class=HTMLResponse)
+def about():
+    path = STATIC_DIR / "about.html"
+    if path.exists():
+        return path.read_text(encoding="utf-8")
+    raise HTTPException(404)
+
 
 if STATIC_DIR.exists():
     app.mount("/static", StaticFiles(directory=str(STATIC_DIR)), name="static")
