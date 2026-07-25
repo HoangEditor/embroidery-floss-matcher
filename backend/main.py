@@ -97,6 +97,20 @@ def robots():
         return Response(path.read_text(encoding="utf-8"), media_type="text/plain")
     raise HTTPException(404)
 
+@app.get("/privacy", response_class=HTMLResponse)
+def privacy():
+    path = STATIC_DIR / "privacy.html"
+    if path.exists():
+        return path.read_text(encoding="utf-8")
+    raise HTTPException(404)
+
+@app.get("/terms", response_class=HTMLResponse)
+def terms():
+    path = STATIC_DIR / "terms.html"
+    if path.exists():
+        return path.read_text(encoding="utf-8")
+    raise HTTPException(404)
+
 @app.get("/about", response_class=HTMLResponse)
 def about():
     path = STATIC_DIR / "about.html"
