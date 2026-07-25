@@ -3,8 +3,8 @@ Embroidery Floss Matcher API
 """
 import json
 from pathlib import Path
-from fastapi import FastAPI, Query
-from fastapi.responses import HTMLResponse
+from fastapi import FastAPI, Query, HTTPException
+from fastapi.responses import HTMLResponse, Response
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -81,7 +81,21 @@ def blog_index():
     path = STATIC_DIR / "blog" / "index.html"
     if path.exists():
         return path.read_text(encoding="utf-8")
-    return "<h1>Blog</h1><p>No posts yet.</p>"
+    return "<h1>Blog</h1>"
+
+@app.get("/sitemap.xml")
+def sitemap():
+    path = STATIC_DIR / "sitemap.xml"
+    if path.exists():
+        return Response(path.read_text(encoding="utf-8"), media_type="application/xml")
+    raise HTTPException(404)
+
+@app.get("/robots.txt")
+def robots():
+    path = STATIC_DIR / "robots.txt"
+    if path.exists():
+        return Response(path.read_text(encoding="utf-8"), media_type="text/plain")
+    raise HTTPException(404)
 
 
 if STATIC_DIR.exists():
