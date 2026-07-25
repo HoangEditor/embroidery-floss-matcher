@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+html = """<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -112,4 +112,7 @@ function showGrid(){
 document.addEventListener('keydown',function(e){if((e.metaKey||e.ctrlKey)&&e.key==='k'){e.preventDefault();document.getElementById('q').focus()}});
 </script>
 </body>
-</html>
+</html>"""
+with open('/Users/Hoang/Projects/embroidery-floss-matcher/static/index.html','w') as f:
+    f.write(html)
+print('OK', len(html), 'bytes')
