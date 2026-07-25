@@ -204,7 +204,7 @@ function render(c){
   r.innerHTML='<div class="ch"><div class="sw" style="background:'+c.hex+'"></div><div class="info"><div class="code">DMC '+c.code+'</div><div class="name">'+c.name+'</div><div class="hex">'+c.hex+'</div></div></div><div class="conv">'+h+'</div>';
   r.classList.add('show');r.scrollIntoView({behavior:'smooth',block:'center'});
 }
-function pick(code){document.getElementById('q').value=code;fetch('/api/color/'+code).then(function(r){return r.json()}).then(function(d){if(d.found){cur=d.color;render(d.color)}})}
+function pick(code){document.getElementById('q').value=code;var g=document.getElementById('g');g.style.display='none';fetch('/api/color/'+code).then(function(r){return r.json()}).then(function(d){if(d.found){cur=d.color;render(d.color);var res=document.getElementById('r');res.scrollIntoView({behavior:'smooth',block:'start'});setTimeout(function(){document.getElementById('q').focus();document.getElementById('q').select()},400)}})}
 function filterBrand(b,el){brand=b;var tabs=document.querySelectorAll('.tab');for(var i=0;i<tabs.length;i++){if(tabs[i]===el)tabs[i].classList.add('on');else tabs[i].classList.remove('on')}if(cur)render(cur)}
 function toggleGrid(){
   var g=document.getElementById('g');
