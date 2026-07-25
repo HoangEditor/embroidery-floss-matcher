@@ -1,35 +1,104 @@
+import json
+
+meta_title = "Embroidery Floss Color Converter — DMC to Anchor, Cosmo & More"
+meta_desc = "Free embroidery floss color converter. Match DMC thread colors to Anchor, Cosmo, J&P Coats instantly. 456 DMC colors with hex codes. Cross stitch thread conversion chart."
+
 html = """<!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Embroidery Floss Matcher</title>
-<meta name="description" content="Find matching embroidery floss colors across DMC, Anchor, Cosmo, J&P Coats.">
+<title>""" + meta_title + """</title>
+<meta name="description" content='""" + meta_desc + """'>
+<meta name="keywords" content="embroidery floss color converter, dmc to anchor conversion, embroidery thread color match, dmc color chart, cross stitch thread conversion, convert dmc to cosmo, embroidery floss substitution, dmc thread converter, floss color finder, embroidery thread equivalent">
+<meta name="robots" content="index, follow">
+<meta name="geo.region" content="VN">
+<meta name="geo.placename" content="Vietnam">
+<meta name="geo.country" content="VN">
+<meta name="author" content="Embroidery Floss Matcher">
+<link rel="canonical" href="https://embroidery-floss-matcher.onrender.com/">
+<link rel="alternate" hreflang="en" href="https://embroidery-floss-matcher.onrender.com/">
+<link rel="alternate" hreflang="x-default" href="https://embroidery-floss-matcher.onrender.com/">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content='""" + meta_title + """'>
+<meta property="og:description" content='""" + meta_desc + """'>
+<meta property="og:url" content="https://embroidery-floss-matcher.onrender.com/">
+<meta property="og:site_name" content="Embroidery Floss Matcher">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content='""" + meta_title + """'>
+<meta name="twitter:description" content='""" + meta_desc + """'>
+
 <link rel="icon" type="image/svg+xml" href="/static/favicon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Embroidery Floss Matcher",
+  "description": "Free embroidery floss color converter. Match DMC to Anchor, Cosmo, J&P Coats.",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the best DMC to Anchor conversion tool?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Embroidery Floss Matcher is a free online tool that instantly converts DMC embroidery floss colors to Anchor, Cosmo, and J&P Coats equivalents. Just type a DMC code like 310, and get matching thread colors across brands."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I find matching embroidery thread colors?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Enter a DMC floss code in the search box. The tool shows exact or closest matches from Anchor, Cosmo, and J&P Coats. You can also browse all 456 DMC colors in the color grid."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I convert DMC thread to Cosmo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The tool includes 449 DMC to Cosmo conversions. Search any DMC code to see its Cosmo equivalent."
+      }
+    }
+  ]
+}
+</script>
+
 <style>
 :root {
-  --bg: #0b0d14; --card: #151822; --border: #252940;
-  --text: #e8eaed; --text2: #8b8fa7; --accent: #6366f1;
-  --glow1: rgba(99,102,241,.12); --glow2: rgba(168,85,247,.08);
-  --shadow: rgba(0,0,0,.4); --swatch-shadow: rgba(0,0,0,.5);
-}
-[data-theme="light"] {
   --bg: #f8f9fa; --card: #ffffff; --border: #e5e7eb;
   --text: #1a1a2e; --text2: #6b7280; --accent: #6366f1;
   --glow1: rgba(99,102,241,.06); --glow2: rgba(168,85,247,.04);
   --shadow: rgba(0,0,0,.08); --swatch-shadow: rgba(0,0,0,.15);
 }
+[data-theme="dark"] {
+  --bg: #0b0d14; --card: #151822; --border: #252940;
+  --text: #e8eaed; --text2: #8b8fa7; --accent: #6366f1;
+  --glow1: rgba(99,102,241,.12); --glow2: rgba(168,85,247,.08);
+  --shadow: rgba(0,0,0,.4); --swatch-shadow: rgba(0,0,0,.5);
+}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;transition:background .4s,color .4s}
 body::before{content:"";position:fixed;inset:0;background:radial-gradient(ellipse 80% 50% at 50% -20%,var(--glow1),transparent),radial-gradient(ellipse 60% 40% at 80% 80%,var(--glow2),transparent);pointer-events:none;z-index:0;transition:background .4s}
 .app{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:40px 20px}
-/* Theme toggle */
 .theme-toggle{position:fixed;top:20px;right:20px;z-index:99;width:44px;height:44px;border-radius:50%;border:1px solid var(--border);background:var(--card);cursor:pointer;font-size:1.2rem;display:flex;align-items:center;justify-content:center;transition:all .3s;box-shadow:0 2px 12px var(--shadow)}
 .theme-toggle:hover{transform:scale(1.1);border-color:var(--accent)}
 .hero{text-align:center;padding:60px 0 40px;animation:fadeUp .8s}
-.hero h1{font-size:2.6rem;font-weight:800;background:linear-gradient(135deg,var(--text) 30%,#a5b4fc 70%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hero p{font-size:1.1rem;color:var(--text2);margin-top:12px}
+.hero h1{font-size:2.6rem;font-weight:800;letter-spacing:-.5px;background:linear-gradient(135deg,var(--text) 30%,#6366f1 70%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{font-size:1.1rem;color:var(--text2);margin-top:12px;max-width:520px;margin-left:auto;margin-right:auto}
 .search{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:6px;display:flex;gap:8px;max-width:500px;margin:0 auto 24px;box-shadow:0 8px 40px var(--shadow);animation:fadeUp .8s .15s both;transition:border-color .3s}
 .search:focus-within{border-color:var(--accent);box-shadow:0 8px 40px rgba(99,102,241,.2)}
 .search input{flex:1;background:none;border:none;outline:none;font-size:1.1rem;color:var(--text);padding:14px 16px;font-family:inherit}
@@ -67,26 +136,46 @@ body::before{content:"";position:fixed;inset:0;background:radial-gradient(ellips
 .gs span{position:absolute;bottom:2px;left:3px;font-size:.52rem;font-weight:700;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.7)}
 .footer{text-align:center;padding:40px 0 20px;color:var(--text2);font-size:.82rem}
 .spin{width:32px;height:32px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:sp .6s linear infinite;margin:0 auto 12px}
+/* SEO content section */
+.seo-content{max-width:700px;margin:48px auto 0;padding:0 20px;animation:fadeUp .8s .5s both}
+.seo-content h2{font-size:1.5rem;font-weight:700;margin-bottom:12px;color:var(--text)}
+.seo-content p{font-size:.92rem;color:var(--text2);line-height:1.7;margin-bottom:14px}
+.seo-content h3{font-size:1.05rem;font-weight:600;margin:20px 0 6px}
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 @keyframes sp{to{transform:rotate(360deg)}}
 @media(max-width:600px){.hero h1{font-size:1.8rem}.ch{flex-direction:column;text-align:center}.sw{width:80px;height:80px}.conv{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
-<button class="theme-toggle" onclick="toggleTheme()" id="themeBtn" title="Toggle light/dark mode">&#9788;</button>
+<button class="theme-toggle" onclick="toggleTheme()" id="themeBtn" title="Toggle dark mode">&#9790;</button>
 <div class="app">
-<header class="hero"><h1>Embroidery Floss Matcher</h1><p>Find matching thread colors across DMC, Anchor, Cosmo &amp; J&amp;P Coats</p></header>
+<header class="hero"><h1>Embroidery Floss Color Converter</h1><p>Free online embroidery thread color finder. Match DMC to Anchor, Cosmo &amp; J&amp;P Coats instantly.</p></header>
 <div class="search"><input id="q" placeholder="Enter DMC code (e.g. 310, 666, 995)..." autofocus onkeydown="if(event.key==='Enter')search()"><button onclick="search()">Match</button></div>
 <div class="tabs"><div class="tab on" onclick="filterBrand('all',this)">All Brands</div><div class="tab" onclick="filterBrand('anchor',this)">Anchor</div><div class="tab" onclick="filterBrand('cosmo',this)">Cosmo</div><div class="tab" onclick="filterBrand('jp_coats',this)">J&amp;P Coats</div></div>
 <div id="load" style="text-align:center;padding:30px;display:none"><div class="spin"></div></div>
 <div class="result" id="r"></div>
-<div style="text-align:center;margin-top:40px"><button class="tab" onclick="toggleGrid()" style="padding:10px 24px">All 456 Colors</button></div>
+<div style="text-align:center;margin-top:40px"><button class="tab" onclick="toggleGrid()" style="padding:10px 24px">Browse All 456 DMC Colors</button></div>
 <div class="grid" id="g"></div>
-<footer class="footer"><p>456 DMC colors &bull; 449 Cosmo matches &bull; 107 Anchor matches</p></footer>
+
+<!-- SEO Content -->
+<div class="seo-content">
+<h2>Convert Embroidery Thread Colors — Free</h2>
+<p>If you do cross stitch or machine embroidery, you know the frustration: you have a DMC color number but need it in Anchor, Cosmo, or J&amp;P Coats. Every brand uses different color codes. Searching through PDF charts is slow. This <strong>embroidery floss color converter</strong> does it in one second.</p>
+<p>Type a DMC code — like 310 for black, 666 for bright red, or 995 for dark blue — and instantly see matching thread colors from Anchor, Cosmo, and J&amp;P Coats. All 456 DMC colors are included, with 449 Cosmo matches and 107 Anchor equivalents.</p>
+<h3>How to use this DMC thread converter</h3>
+<p>Enter any DMC embroidery floss number in the search box. The <strong>DMC to Anchor conversion</strong> shows you the closest Anchor thread. Switch tabs to see Cosmo or J&amp;P Coats equivalents. Need to explore? Click "Browse All 456 DMC Colors" to scroll through a complete <strong>DMC color chart</strong> with hex codes.</p>
+<h3>Which brands does this cross stitch thread converter cover?</h3>
+<p><strong>DMC</strong> — 456 colors, the world standard for embroidery floss. <strong>Anchor</strong> — 107 direct equivalents from official conversion charts. <strong>Cosmo</strong> — 449 matches, popular in Japan and among modern embroiderers. <strong>J&P Coats</strong> — 107 conversions, a classic American brand. We are working on adding Madeira and other brands.</p>
+<h3>Why use an embroidery floss substitution tool?</h3>
+<p>Maybe your local store only stocks Anchor. Maybe a pattern calls for DMC but you prefer Cosmo's sheen. Maybe you inherited a stash of mixed brands and need to match colors across them. Whatever the reason, this <strong>floss color finder</strong> saves you from manually cross-referencing conversion tables.</p>
 </div>
+
+<footer class="footer"><p><strong>Embroidery Floss Matcher</strong> &mdash; Free embroidery thread color conversion.</p><p style="margin-top:4px">456 DMC colors &bull; 449 Cosmo matches &bull; 107 Anchor &amp; J&amp;P Coats conversions.</p></footer>
+</div>
+
 <script>
 function toggleTheme(){var h=document.documentElement;var btn=document.getElementById('themeBtn');if(h.getAttribute('data-theme')==='light'){h.setAttribute('data-theme','dark');btn.innerHTML='&#9788;';localStorage.setItem('floss-theme','dark')}else{h.setAttribute('data-theme','light');btn.innerHTML='&#9790;';localStorage.setItem('floss-theme','light')}}
-(function(){var t=localStorage.getItem('floss-theme')||'dark';document.documentElement.setAttribute('data-theme',t);document.getElementById('themeBtn').innerHTML=t==='light'?'&#9790;':'&#9788;'})();
+(function(){var t=localStorage.getItem('floss-theme')||'light';document.documentElement.setAttribute('data-theme',t);document.getElementById('themeBtn').innerHTML=t==='dark'?'&#9788;':'&#9790;'})();
 var cur=null,all=[],brand='all';
 function search(){
   var q=document.getElementById('q').value.trim();
@@ -110,7 +199,7 @@ function render(c){
   if(c.jp_coats)conv.push({b:'J&P Coats',code:c.jp_coats});
   if(brand!=='all')conv=conv.filter(function(x){var b=x.b.toLowerCase().replace(/[ &]/g,'_');return b===brand});
   var h=conv.map(function(x,i){return'<div class="cc" style="animation-delay:'+(.1+i*.08)+'s"><div class="ccsw" style="background:'+c.hex+'"></div><div><div class="ccb">'+x.b+'</div><div class="cccode">#'+x.code+'</div></div></div>'}).join('');
-  if(!h)h='<div style="grid-column:1/-1;text-align:center;padding:20px;color:var(--text2)">No equivalents found</div>';
+  if(!h)h='<div style="grid-column:1/-1;text-align:center;padding:20px;color:var(--text2)">No equivalents found for this brand</div>';
   var r=document.getElementById('r');
   r.innerHTML='<div class="ch"><div class="sw" style="background:'+c.hex+'"></div><div class="info"><div class="code">DMC '+c.code+'</div><div class="name">'+c.name+'</div><div class="hex">'+c.hex+'</div></div></div><div class="conv">'+h+'</div>';
   r.classList.add('show');r.scrollIntoView({behavior:'smooth',block:'center'});
@@ -132,6 +221,17 @@ document.addEventListener('keydown',function(e){if((e.metaKey||e.ctrlKey)&&e.key
 </script>
 </body>
 </html>"""
+
 with open('/Users/Hoang/Projects/embroidery-floss-matcher/static/index.html','w') as f:
     f.write(html)
 print('Frontend OK', len(html), 'bytes')
+print()
+print('SEO features:')
+print('  + Title optimized:', meta_title[:60]+'...')
+print('  + Meta description:', len(meta_desc), 'chars')
+print('  + Schema: WebApplication + FAQPage')
+print('  + Geo tags: VN')
+print('  + Canonical + hreflang')
+print('  + Open Graph + Twitter Card')
+print('  + SEO content: h2+h3, keywords embedded naturally')
+print('  + Default: light theme')
