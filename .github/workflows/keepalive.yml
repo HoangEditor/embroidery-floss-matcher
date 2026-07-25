@@ -1,0 +1,20 @@
+name: Keep Render Apps Alive
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'  # every 10 minutes
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Embroidery Floss Matcher
+        run: |
+          curl -s -o /dev/null -w "Floss Matcher: %{http_code}\n" \
+            https://embroidery-floss-matcher.onrender.com/api/health || true
+
+      - name: Ping Embroidery File Converter
+        run: |
+          curl -s -o /dev/null -w "File Converter: %{http_code}\n" \
+            https://embroidery-file-converter.onrender.com/api/health || true
