@@ -16,14 +16,14 @@ html = """<!DOCTYPE html>
 <meta name="geo.placename" content="Vietnam">
 <meta name="geo.country" content="VN">
 <meta name="author" content="Embroidery Floss Matcher">
-<link rel="canonical" href="https://embroidery-floss-matcher.onrender.com/">
-<link rel="alternate" hreflang="en" href="https://embroidery-floss-matcher.onrender.com/">
-<link rel="alternate" hreflang="x-default" href="https://embroidery-floss-matcher.onrender.com/">
+<link rel="canonical" href="https://match-floss.onrender.com/">
+<link rel="alternate" hreflang="en" href="https://match-floss.onrender.com/">
+<link rel="alternate" hreflang="x-default" href="https://match-floss.onrender.com/">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content='""" + meta_title + """'>
 <meta property="og:description" content='""" + meta_desc + """'>
-<meta property="og:url" content="https://embroidery-floss-matcher.onrender.com/">
+<meta property="og:url" content="https://match-floss.onrender.com/">
 <meta property="og:site_name" content="Embroidery Floss Matcher">
 
 <meta name="twitter:card" content="summary_large_image">

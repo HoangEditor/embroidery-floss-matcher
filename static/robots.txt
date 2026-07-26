@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-Sitemap: https://embroidery-floss-matcher.onrender.com/sitemap.xml
+Sitemap: https://match-floss.onrender.com/sitemap.xml

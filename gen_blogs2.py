@@ -6,7 +6,7 @@ import os
 BLOG_DIR = os.path.expanduser("~/Projects/embroidery-floss-matcher/static/blog")
 os.makedirs(BLOG_DIR, exist_ok=True)
 
-SITE_URL = "https://embroidery-floss-matcher.onrender.com"
+SITE_URL = "https://match-floss.onrender.com"
 SITE_NAME = "Embroidery Floss Matcher"
 CONVERTER_URL = "https://embroidery-file-converter.onrender.com"
 
